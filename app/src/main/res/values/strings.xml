@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">RST V1</string>
+
+    <!-- Login Screen -->
+    <string name="title_create_account">Create an account</string>
+    <string name="subtitle_sign_up">Enter your email to sign up for this app</string>
+    <string name="hint_email">email@domain.com</string>
+    <string name="button_sign_up_email">Sign up with email</string>
+    <string name="text_or">or</string>
+    <string name="button_sign_up_google">Google</string>
+
+    <!-- Links -->
+
+
+    <!-- Content Descriptions -->
+    <string name="desc_google_icon">Google icon</string>
+    <string name="image_description">logo apps</string>
+
+    <!-- Sign-In Screen -->
+    <string name="error_invalid_email">Invalid email address</string>
+    <string name="msg_email_signup">Signing up with email: %1$s</string>
+    <string name="msg_google_signin_success">Signed in with Google: %1$s</string>
+    <string name="error_google_signin">Google sign in failed</string>
+
+    <!-- Links -->
+    <string name="url_terms_of_service">https://yourapp.com/terms</string>
+    <string name="url_privacy_policy">https://yourapp.com/privacy</string>
+    <string name="text_terms_and_privacy">By clicking continue, you agree to our Terms of Service and Privacy Policy</string>
+    <string name="link_terms_of_service">Terms of Service</string>
+    <string name="link_privacy_policy">Privacy Policy</string>
+</resources>
