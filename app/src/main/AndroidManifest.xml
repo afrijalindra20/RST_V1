@@ -18,7 +18,13 @@
         android:theme="@style/Theme.RSTV1"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".view.plan.RouteActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.plan.MulaiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.plan.EmergencyActivity"
             android:exported="false" />
         <activity
             android:name=".view.main.MenujuActivity"

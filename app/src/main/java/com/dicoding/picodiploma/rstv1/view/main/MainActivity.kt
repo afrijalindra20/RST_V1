@@ -86,12 +86,24 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, StartJourneyListen
 
         // Set up FABs
         fabEmergency.setOnClickListener {
-            startActivity(Intent(this, EmergencyActivity::class.java))
+            showEmergencyDialog()
         }
 
         fabLocation.setOnClickListener {
             checkLocationPermissionAndShowUserLocation()
         }
+    }
+
+    private fun showEmergencyDialog() {
+        AlertDialog.Builder(this)
+            .setTitle("Emergency")
+            .setMessage("Ingin mencari SPBU terdekat?")
+            .setPositiveButton("Ya") { _, _ ->
+                val intent = Intent(this, EmergencyActivity::class.java)
+                startActivity(intent)
+            }
+            .setNegativeButton("Tidak", null)
+            .show()
     }
 
     private fun setupAutoCompleteTextView() {

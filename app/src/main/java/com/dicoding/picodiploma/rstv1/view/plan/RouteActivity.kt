@@ -18,15 +18,24 @@ import com.google.android.gms.maps.model.PolylineOptions
 class RouteActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
+    private lateinit var startLocation: LatLng
+    private lateinit var endLocation: LatLng
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_route)
 
+        val startLat = intent.getDoubleExtra("START_LAT", 0.0)
+        val startLng = intent.getDoubleExtra("START_LNG", 0.0)
+        val endLat = intent.getDoubleExtra("END_LAT", 0.0)
+        val endLng = intent.getDoubleExtra("END_LNG", 0.0)
+
+        startLocation = LatLng(startLat, startLng)
+        endLocation = LatLng(endLat, endLng)
+
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
-
 
         findViewById<Button>(R.id.btnStart).setOnClickListener {
             startActivity(Intent(this, MulaiActivity::class.java))
@@ -34,21 +43,20 @@ class RouteActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
+        setupMap(googleMap)
+    }
+
+    private fun setupMap(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Lokasi palsu untuk demonstrasi
-        val currentLocation = LatLng(-6.2088, 106.8456) // Jakarta
-        val curugCitambur = LatLng(-7.3258, 107.3877) // Curug Citambur
+        mMap.addMarker(MarkerOptions().position(startLocation).title("Lokasi Anda"))
+        mMap.addMarker(MarkerOptions().position(endLocation).title("Curug Citambur"))
 
-        // Tambahkan marker
-        mMap.addMarker(MarkerOptions().position(currentLocation).title("Lokasi Anda"))
-        mMap.addMarker(MarkerOptions().position(curugCitambur).title("Curug Citambur"))
-
-        // Gambar garis rute palsu
         val routePoints = listOf(
-            currentLocation,
-            LatLng(-6.5971, 106.8060), // Titik tengah palsu
-            curugCitambur
+            startLocation,
+            LatLng((startLocation.latitude + endLocation.latitude) / 2,
+                (startLocation.longitude + endLocation.longitude) / 2), // Titik tengah
+            endLocation
         )
 
         mMap.addPolyline(
@@ -58,8 +66,7 @@ class RouteActivity : AppCompatActivity(), OnMapReadyCallback {
                 .color(Color.BLUE)
         )
 
-        // Pindahkan kamera ke posisi yang mencakup kedua lokasi
-        val bounds = LatLngBounds.Builder().include(currentLocation).include(curugCitambur).build()
+        val bounds = LatLngBounds.Builder().include(startLocation).include(endLocation).build()
         mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100))
     }
 }

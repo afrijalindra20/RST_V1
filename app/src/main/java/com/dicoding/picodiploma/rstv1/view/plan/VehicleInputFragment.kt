@@ -1,6 +1,5 @@
 package com.dicoding.picodiploma.rstv1.view.plan
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -28,15 +27,8 @@ class VehicleInputFragment : Fragment() {
         nextButton = view.findViewById(R.id.nextButton)
         closeButton = view.findViewById(R.id.closeButton)
 
-        // Mengambil data yang sudah ada (jika ada)
-        val sharedPreferences = requireActivity().getSharedPreferences("VehicleInfo", Context.MODE_PRIVATE)
-        vehicleTypeInput.setText(sharedPreferences.getString("vehicleType", ""))
-        fullTankInput.setText(sharedPreferences.getFloat("fullTankCapacity", 0f).toString())
-        kmPerLiterInput.setText(sharedPreferences.getFloat("kmPerLiter", 0f).toString())
-
         nextButton.setOnClickListener {
             if (validateInputs()) {
-                saveVehicleInfo()
                 navigateToFuelLevelFragment()
             }
         }
@@ -64,16 +56,6 @@ class VehicleInputFragment : Fragment() {
         }
 
         return true
-    }
-
-    private fun saveVehicleInfo() {
-        val sharedPreferences = requireActivity().getSharedPreferences("VehicleInfo", Context.MODE_PRIVATE)
-        with(sharedPreferences.edit()) {
-            putString("vehicleType", vehicleTypeInput.text.toString())
-            putFloat("fullTankCapacity", fullTankInput.text.toString().toFloat())
-            putFloat("kmPerLiter", kmPerLiterInput.text.toString().toFloat())
-            apply()
-        }
     }
 
     private fun navigateToFuelLevelFragment() {

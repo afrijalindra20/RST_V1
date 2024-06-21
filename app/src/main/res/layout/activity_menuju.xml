@@ -35,7 +35,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:hint="Mau Ke Mana Hari Ini ?"
+            android:hint="Curug Citambur, Cianjur,Jawa Barat"
             android:completionThreshold="1"
             android:background="@android:color/transparent"
             android:paddingStart="8dp"

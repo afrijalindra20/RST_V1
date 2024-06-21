@@ -19,52 +19,57 @@ import com.google.android.gms.maps.model.PolylineOptions
 
 class MenujuActivity : AppCompatActivity(), OnMapReadyCallback {
 
-        private lateinit var mMap: GoogleMap
+    private lateinit var mMap: GoogleMap
 
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_menuju)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_menuju)
 
-            val mapFragment = supportFragmentManager
-                .findFragmentById(R.id.map) as SupportMapFragment
-            mapFragment.getMapAsync(this)
+        val mapFragment = supportFragmentManager
+            .findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
 
-            findViewById<Button>(R.id.buttonRoute).setOnClickListener {
-                startActivity(Intent(this, RouteActivity::class.java))
-            }
-
-            findViewById<Button>(R.id.buttonStart).setOnClickListener {
-                startActivity(Intent(this, MulaiActivity::class.java))
-            }
+        findViewById<Button>(R.id.buttonRoute).setOnClickListener {
+            val intent = Intent(this, RouteActivity::class.java)
+            intent.putExtra("START_LAT", -6.2088)
+            intent.putExtra("START_LNG", 106.8456)
+            intent.putExtra("END_LAT", -7.3258)
+            intent.putExtra("END_LNG", 107.3877)
+            startActivity(intent)
         }
 
-        override fun onMapReady(googleMap: GoogleMap) {
-            mMap = googleMap
-
-            // Lokasi palsu untuk demonstrasi
-            val currentLocation = LatLng(-6.2088, 106.8456) // Jakarta
-            val curugCitambur = LatLng(-7.3258, 107.3877) // Curug Citambur
-
-            // Tambahkan marker
-            mMap.addMarker(MarkerOptions().position(currentLocation).title("Lokasi Anda"))
-            mMap.addMarker(MarkerOptions().position(curugCitambur).title("Curug Citambur"))
-
-            // Gambar garis rute palsu
-            val routePoints = listOf(
-                currentLocation,
-                LatLng(-6.5971, 106.8060), // Titik tengah palsu
-                curugCitambur
-            )
-
-            mMap.addPolyline(
-                PolylineOptions()
-                    .addAll(routePoints)
-                    .width(5f)
-                    .color(Color.BLUE)
-            )
-
-            // Pindahkan kamera ke posisi yang mencakup kedua lokasi
-            val bounds = LatLngBounds.Builder().include(currentLocation).include(curugCitambur).build()
-            mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100))
+        findViewById<Button>(R.id.buttonStart).setOnClickListener {
+            startActivity(Intent(this, MulaiActivity::class.java))
         }
     }
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        setupMap(googleMap)
+    }
+
+    private fun setupMap(googleMap: GoogleMap) {
+        mMap = googleMap
+
+        val currentLocation = LatLng(-6.2088, 106.8456) // Jakarta
+        val curugCitambur = LatLng(-7.3258, 107.3877) // Curug Citambur
+
+        mMap.addMarker(MarkerOptions().position(currentLocation).title("Lokasi Anda"))
+        mMap.addMarker(MarkerOptions().position(curugCitambur).title("Curug Citambur"))
+
+        val routePoints = listOf(
+            currentLocation,
+            LatLng(-6.5971, 106.8060), // Titik tengah palsu
+            curugCitambur
+        )
+
+        mMap.addPolyline(
+            PolylineOptions()
+                .addAll(routePoints)
+                .width(5f)
+                .color(Color.BLUE)
+        )
+
+        val bounds = LatLngBounds.Builder().include(currentLocation).include(curugCitambur).build()
+        mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100))
+    }
+}
