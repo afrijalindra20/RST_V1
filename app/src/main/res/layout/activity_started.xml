@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@drawable/bg3"
+tools:context=".view.started.StartedActivity">
+
+<TextView
+    android:id="@+id/welcome"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fontFamily="@font/montserrat_semibold"
+    android:text="@string/welcome"
+    android:textColor="@color/blue_darker"
+    android:textSize="38sp"
+    android:layout_marginTop="300dp"
+    android:layout_marginRight="80dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.1" />
+
+<TextView
+    android:id="@+id/nusamaps"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fontFamily="@font/montserrat_semibold"
+    android:text="@string/nusamaps"
+    android:layout_marginRight="120dp"
+    android:textColor="@color/blue_darker"
+    android:textSize="38sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/welcome"
+    app:layout_constraintVertical_bias="0.1" />
+
+<TextView
+    android:id="@+id/selamat"
+    android:layout_width="354dp"
+    android:layout_height="193dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:fontFamily="@font/montserrat"
+    android:text="@string/selamat"
+    android:textColor="@color/black"
+    android:textSize="18sp"
+    android:textStyle="bold"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/nusamaps" />
+
+<Button
+    android:id="@+id/getStartedButton"
+    android:layout_width="267dp"
+    android:layout_height="39dp"
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"
+    android:background="@drawable/rounded_button"
+    android:fontFamily="@font/montserrat_semibold"
+    android:text="@string/get_started"
+    android:textColor="@color/blue_darker"
+    android:textSize="17sp"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/selamat"
+    app:layout_constraintVertical_bias="0.3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

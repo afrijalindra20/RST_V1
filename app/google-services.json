@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "413906891234",
+    "project_id": "rsv1-d05bb",
+    "storage_bucket": "rst-v1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:373582735598:android:bce667861164e7120eebff",
+        "android_client_info": {
+          "package_name": "com.dicoding.picodiploma.rstv1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAV7JXmHxsfCl5xmqsPWGCGcLzSfz8Srko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

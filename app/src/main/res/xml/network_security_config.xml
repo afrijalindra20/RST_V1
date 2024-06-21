@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">tes-nkl5z30sj-yoris-projects-27457.vercel.app</domain>
+    </domain-config>
+</network-security-config>

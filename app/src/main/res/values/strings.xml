@@ -1,31 +1,113 @@
 <resources>
     <string name="app_name">RST V1</string>
+    <string name="app_description">NUSAMAPS</string>
+    <string name="welcome">WELCOME TO</string>
+    <string name="nusamaps">NUSAMAPS</string>
+    <string name="selamat">Selamat datang di NusaMaps! \nAplikasi peta yang dirancang khusus untuk memudahkan perjalanan Anda. Temukan rute tercepat, lokasi menarik di sekitar Anda, serta panduan navigasi real-time yang akurat.\nMari mulai petualangan Anda bersama NusaMaps sekarang!</string>
+    <string name="get_started">GET STARTED!</string>
+    <string name="dont">don’t have account ? Sign Up</string>
+    <string name="google">Google</string>
+    <string name="or_continue">or</string>
+    <string name="title_create_new_account">sign in</string>
+    <string name="satellite_type">Satellite</string>
+    <string name="terrain_type">Terrain</string>
+    <string name="hybrid_type">Hybrid</string>
+    <string name="retry">Coba lagi</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="emergency">Emergency</string>
+    <string name="info">Info</string>
+    <string name="add">Add</string>
+    <string name="back">back</string>
+    <string name="hint_name">name</string>
+    <string name="hint_email">email or username</string>
+    <string name="Create_Account">create account</string>
+    <string name="hint_password">password</string>
+    <string name="register_name">username</string>
+    <string name="register_email">email</string>
+    <string name="register_password">password</string>
+    <string name="normal_type">normal</string>
+    <string name="title_create_login">LOGIN</string>
+    <string name="default_web_client_id">default web client id</string>
+    <string name="forgot_pass">forgot password ?</string>
+    <string name="change">Change Password</string>
+    <string name="confirm">Confirm Password</string>
+    <string name="password_baru">New Password</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="logout">logout\n</string>
+    <string name="logout_confirmation">apakah anda yakin keluar aplikasi?</string>
+    <string name="yes">Iya</string>
+    <string name="no">Tidak</string>
+    <string name="location">lokasi</string>
+    <string name="home">icon home</string>
+    <string name="profile">icon profile</string>
+    <string name="search">Search</string>
+    <string name="hint_search">Mau Ke Mana Hari Ini?</string>
+    <string name="name">nama\n</string>
+    <string name="email">email</string>
+    <string name="masukkan_jenis_kendaraan">Masukkan jenis kendaraan</string>
+    <string name="kapasitas_tangki_liter">Kapasitas Tangki (Liter)</string>
+    <string name="konsumsi_bahan_bakar_km_liter">Konsumsi Bahan Bakar (Km/Liter)</string>
+    <string name="jenis_kendaraan">Jenis Kendaraan</string>
+    <string name="masukkan_kapasitas_tangki">Liter</string>
+    <string name="contoh_bahan_bakar">40 km/liter</string>
+    <string name="hint_bahan_bakar">contoh 40 km/liter</string>
+    <string name="hint_kapasitas">contoh 5 liter</string>
+    <string name="hint_kendaraan">motor</string>
+    <string name="complete_profile">Lengkapi Profil</string>
+    <string name="trip_history">Riwayat Perjalanan</string>
+    <string name="start_point_hint">Enter start point</string>
+    <string name="end_point_hint">Enter end point</string>
+    <string name="fuel_tank_capacity_hint">Enter fuel tank capacity (liters)</string>
+    <string name="fuel_efficiency_hint">Enter fuel efficiency (km/l)</string>
+    <string name="calculate_button_text">Calculate</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="map_view_description">Map view for displaying the nearest gas station route</string>
+    <string name="title_activity_emergency">EmergencyActivity</string>
+    <string name="title_register">Register</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="next">Next</string>
+    <string name="user_icon">user icon\n</string>
+    <string name="search_icon">search icon</string>
+    <string name="title_activity_menuju">MenujuActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="previous">Previous</string>
 
-    <!-- Login Screen -->
-    <string name="title_create_account">Create an account</string>
-    <string name="subtitle_sign_up">Enter your email to sign up for this app</string>
-    <string name="hint_email">email@domain.com</string>
-    <string name="button_sign_up_email">Sign up with email</string>
-    <string name="text_or">or</string>
-    <string name="button_sign_up_google">Google</string>
-
-    <!-- Links -->
-
-
-    <!-- Content Descriptions -->
-    <string name="desc_google_icon">Google icon</string>
-    <string name="image_description">logo apps</string>
-
-    <!-- Sign-In Screen -->
-    <string name="error_invalid_email">Invalid email address</string>
-    <string name="msg_email_signup">Signing up with email: %1$s</string>
-    <string name="msg_google_signin_success">Signed in with Google: %1$s</string>
-    <string name="error_google_signin">Google sign in failed</string>
-
-    <!-- Links -->
-    <string name="url_terms_of_service">https://yourapp.com/terms</string>
-    <string name="url_privacy_policy">https://yourapp.com/privacy</string>
-    <string name="text_terms_and_privacy">By clicking continue, you agree to our Terms of Service and Privacy Policy</string>
-    <string name="link_terms_of_service">Terms of Service</string>
-    <string name="link_privacy_policy">Privacy Policy</string>
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
+        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
+        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
+        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
+        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
+        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
+        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
+        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
+        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
+        fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
+        molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
+        bibendum, vel congue leo egestas.\n\n
+        Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
+        amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
+        molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
+        interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
+        lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
+        in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
+        est.\n\n
+        Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
+        Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
+        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
+        eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
+        quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
+        ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
+        placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
+        convallis.\n\n
+        Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
+        malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
+        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
+        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
+        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
+        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
+        vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
+    </string>
 </resources>

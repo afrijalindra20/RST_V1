@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pilih jenis tempat darurat:"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnGasStation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SPBU" />
+
+    <Button
+        android:id="@+id/btnMosque"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Masjid" />
+
+    <Button
+        android:id="@+id/btnRestaurant"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Restoran" />
+
+    <Button
+        android:id="@+id/btnTouristAttraction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tempat Wisata" />
+
+    <Button
+        android:id="@+id/btnRestArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rest Area" />
+
+    <Button
+        android:id="@+id/btnAccommodation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Akomodasi" />
+
+</LinearLayout>

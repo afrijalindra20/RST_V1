@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/semi_transparent_background">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:background="@drawable/rounded_button_2">
+
+            <TextView
+                android:id="@+id/tvForgotTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:text="Reset Password"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/blue_darker"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_forgot_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvForgotTitle"
+                android:layout_marginTop="24dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_forgot_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/white_button"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:gravity="start|center_vertical"
+                    android:hint="@string/hint_email"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="16dp"
+                    android:textColor="#000000"
+                    android:textSize="13sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_forgot_old_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/til_forgot_email"
+                android:layout_marginTop="16dp"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_forgot_old_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/white_button"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:gravity="start|center_vertical"
+                    android:hint="Old Password"
+                    android:inputType="textPassword"
+                    android:paddingStart="16dp"
+                    android:textColor="#000000"
+                    android:textSize="13sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_forgot_new_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/til_forgot_old_password"
+                android:layout_marginTop="16dp"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_forgot_new_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/white_button"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:gravity="start|center_vertical"
+                    android:hint="New Password"
+                    android:inputType="textPassword"
+                    android:paddingStart="16dp"
+                    android:textColor="#000000"
+                    android:textSize="13sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_forgot_confirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/til_forgot_new_password"
+                android:layout_marginTop="16dp"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_forgot_confirm_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/white_button"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:gravity="start|center_vertical"
+                    android:hint="Confirm New Password"
+                    android:inputType="textPassword"
+                    android:paddingStart="16dp"
+                    android:textColor="#000000"
+                    android:textSize="13sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/ResetPasswordButton"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@+id/til_forgot_confirm_password"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/rounded_button"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="Reset Password"
+                android:textColor="@color/blue_darker"
+                android:textSize="13sp" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
