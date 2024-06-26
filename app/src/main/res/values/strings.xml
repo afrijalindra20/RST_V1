@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RST V1</string>
+    <string name="app_name">NUSAMAPS</string>
     <string name="app_description">NUSAMAPS</string>
     <string name="welcome">WELCOME TO</string>
     <string name="nusamaps">NUSAMAPS</string>
@@ -27,7 +27,7 @@
     <string name="register_password">password</string>
     <string name="normal_type">normal</string>
     <string name="title_create_login">LOGIN</string>
-    <string name="default_web_client_id">default web client id</string>
+
     <string name="forgot_pass">forgot password ?</string>
     <string name="change">Change Password</string>
     <string name="confirm">Confirm Password</string>
@@ -110,4 +110,7 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="default_web_client_id">413906891234-0a9se7e1pk42883vv4nu8osckatkki8q.apps.googleusercontent.com</string>
+    <string name="distance_format">Distance: %.2f km</string>
+    <string name="time_format">Time: %.2f minutes</string>
 </resources>

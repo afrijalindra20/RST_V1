@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "413906891234",
+    "firebase_url": "https://rsv1-d05bb-default-rtdb.firebaseio.com",
+    "project_id": "rsv1-d05bb",
+    "storage_bucket": "rsv1-d05bb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:413906891234:android:7d07a1762d4cddc00649bb",
+        "android_client_info": {
+          "package_name": "com.dicoding.picodiploma.rstv1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_idz": "413906891234-9s1j663m7e0f9f76quf2h0kiuvbavq1k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dicoding.picodiploma.rstv1",
+            "certificate_hash": "4e5f4605368ac097c14a321bfff6893ddbc3c3ef"
+          }
+        },
+        {
+          "client_id": "413906891234-0a9se7e1pk42883vv4nu8osckatkki8q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBq6WPKYdFTT9sdf-MK69bGD07ma4rwRaQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "413906891234-0a9se7e1pk42883vv4nu8osckatkki8q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

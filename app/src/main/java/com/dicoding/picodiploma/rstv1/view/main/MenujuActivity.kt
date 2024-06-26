@@ -1,75 +1,109 @@
 package com.dicoding.picodiploma.rstv1.view.main
 
 import android.content.Intent
-import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.dicoding.picodiploma.rstv1.R
-import com.dicoding.picodiploma.rstv1.view.plan.MulaiActivity
-import com.dicoding.picodiploma.rstv1.view.plan.RouteActivity
+import com.dicoding.picodiploma.rstv1.view.plan.LocationDescriptionFragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.gms.maps.model.PolylineOptions
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MenujuActivity : AppCompatActivity(), OnMapReadyCallback {
-
+    private lateinit var viewModel: JourneyViewModel
     private lateinit var mMap: GoogleMap
+
+    private val startLocation = LatLng(-6.974296096529034, 108.48384394059156)
+    private val endLocation = LatLng(-7.192361151752414, 107.2346728532833)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menuju)
 
+        viewModel = ViewModelProvider(this).get(JourneyViewModel::class.java)
+
+        val destination = intent.getStringExtra("DESTINATION") ?: return
+
+        // Set destination name
+        findViewById<TextView>(R.id.textViewName).text = destination
+
+        // Inisialisasi peta
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        findViewById<Button>(R.id.buttonRoute).setOnClickListener {
-            val intent = Intent(this, RouteActivity::class.java)
-            intent.putExtra("START_LAT", -6.2088)
-            intent.putExtra("START_LNG", 106.8456)
-            intent.putExtra("END_LAT", -7.3258)
-            intent.putExtra("END_LNG", 107.3877)
-            startActivity(intent)
+        findViewById<Button>(R.id.buttonStart).setOnClickListener {
+            startJourneyWithGoogleMaps()
         }
 
-        findViewById<Button>(R.id.buttonStart).setOnClickListener {
-            startActivity(Intent(this, MulaiActivity::class.java))
+        // Tambahkan listener untuk tombol Show Description
+        findViewById<Button>(R.id.buttonShowDescription).setOnClickListener {
+            showLocationDescriptionFragment()
         }
+
+        // Set up FAB listeners
+        findViewById<FloatingActionButton>(R.id.fab_location).setOnClickListener {
+            // Handle location FAB click
+            centerMapOnDestination()
+        }
+
+    }
+
+    private fun startJourneyWithGoogleMaps() {
+        val uri = Uri.parse("https://www.google.com/maps/dir/?api=1&origin=${startLocation.latitude},${startLocation.longitude}&destination=${endLocation.latitude},${endLocation.longitude}&travelmode=driving")
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        intent.setPackage("com.google.android.apps.maps")
+
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivity(intent)
+        } else {
+            // Jika Google Maps tidak terinstall, buka di browser
+            val browserIntent = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(browserIntent)
+        }
+    }
+
+    private fun showLocationDescriptionFragment() {
+        val fragment = LocationDescriptionFragment()
+        supportFragmentManager.beginTransaction()
+            .add(android.R.id.content, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        setupMap(googleMap)
-    }
-
-    private fun setupMap(googleMap: GoogleMap) {
         mMap = googleMap
 
-        val currentLocation = LatLng(-6.2088, 106.8456) // Jakarta
-        val curugCitambur = LatLng(-7.3258, 107.3877) // Curug Citambur
+        // Tambahkan marker untuk lokasi awal dan tujuan
+        mMap.addMarker(MarkerOptions().position(startLocation).title("Lokasi Awal"))
+        mMap.addMarker(MarkerOptions().position(endLocation).title("Lokasi Tujuan"))
 
-        mMap.addMarker(MarkerOptions().position(currentLocation).title("Lokasi Anda"))
-        mMap.addMarker(MarkerOptions().position(curugCitambur).title("Curug Citambur"))
-
-        val routePoints = listOf(
-            currentLocation,
-            LatLng(-6.5971, 106.8060), // Titik tengah palsu
-            curugCitambur
-        )
-
-        mMap.addPolyline(
-            PolylineOptions()
-                .addAll(routePoints)
-                .width(5f)
-                .color(Color.BLUE)
-        )
-
-        val bounds = LatLngBounds.Builder().include(currentLocation).include(curugCitambur).build()
+        // Atur zoom level dan posisi kamera untuk menampilkan kedua lokasi
+        val bounds = com.google.android.gms.maps.model.LatLngBounds.Builder()
+            .include(startLocation)
+            .include(endLocation)
+            .build()
         mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100))
+    }
+
+    private fun centerMapOnDestination() {
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(endLocation, 15f))
+    }
+
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount > 0) {
+            supportFragmentManager.popBackStack()
+        } else {
+            super.onBackPressed()
+        }
     }
 }

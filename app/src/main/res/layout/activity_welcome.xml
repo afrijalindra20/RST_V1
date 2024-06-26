@@ -41,7 +41,7 @@
             android:id="@+id/ed_login_email"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/white_button"
+            android:background="@drawable/rounded_button_2"
             android:fontFamily="@font/montserrat_semibold"
             android:gravity="start|center_vertical"
             android:hint="@string/hint_email"
@@ -65,7 +65,7 @@
             android:id="@+id/ed_login_password"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/white_button"
+            android:background="@drawable/rounded_button_2"
             android:fontFamily="@font/montserrat_semibold"
             android:gravity="start|center_vertical"
             android:hint="@string/hint_password"
@@ -94,7 +94,7 @@
         android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/rounded_button_6"
         android:fontFamily="@font/montserrat_semibold"
         android:text="@string/title_create_login"
         android:textColor="@color/blue_darker"
@@ -111,24 +111,38 @@
         android:textColor="@color/blue_darker"
         android:textSize="14sp" />
 
-    <Button
-        android:id="@+id/loginGoogleButton"
+    <FrameLayout
+        android:id="@+id/buttonlogin"
         android:layout_width="310dp"
         android:layout_height="45dp"
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:background="@drawable/rounded_button"
-        android:fontFamily="@font/montserrat_semibold"
-        android:text="@string/google"
-        android:textColor="@color/blue_darker"
-        android:textSize="13sp" />
+        android:background="@drawable/rounded_button_6">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_google_sized"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/google"
+            android:textColor="@color/blue_darker"
+            android:textSize="13sp"
+            android:fontFamily="@font/montserrat_semibold"/>
+
+    </FrameLayout>
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/loginGoogleButton"
+        android:layout_below="@+id/buttonlogin"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="@string/dont"

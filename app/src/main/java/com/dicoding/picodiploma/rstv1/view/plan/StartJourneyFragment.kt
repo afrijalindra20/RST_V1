@@ -11,12 +11,27 @@ import androidx.fragment.app.FragmentManager
 import com.dicoding.picodiploma.rstv1.R
 
 interface StartJourneyListener {
-    fun onJourneyStarted()
+    fun onJourneyStarted(vehicleType: String, fullTank: Float, kmPerLiter: Float, currentFuelLevel: String)
 }
 
 class StartJourneyFragment : Fragment() {
     private lateinit var startJourneyButton: Button
     private var startJourneyListener: StartJourneyListener? = null
+
+    private var vehicleType: String? = null
+    private var fullTank: Float = 0f
+    private var kmPerLiter: Float = 0f
+    private var currentFuelLevel: String? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            vehicleType = it.getString("vehicleType")
+            fullTank = it.getFloat("fullTank")
+            kmPerLiter = it.getFloat("kmPerLiter")
+            currentFuelLevel = it.getString("currentFuelLevel")
+        }
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -33,14 +48,16 @@ class StartJourneyFragment : Fragment() {
         startJourneyButton = view.findViewById(R.id.start_journey_button)
 
         startJourneyButton.setOnClickListener {
-            // Here you can add any logic needed before starting the journey
-            // For example, you might want to save the journey start time
-
-            // Close all fragments and return to the main map view
+            // Tutup semua fragment dan kembali ke tampilan peta utama
             parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
 
-            // Notify the activity that the journey has started
-            startJourneyListener?.onJourneyStarted()
+            // Kirim data ke activity melalui interface
+            startJourneyListener?.onJourneyStarted(
+                vehicleType ?: "",
+                fullTank,
+                kmPerLiter,
+                currentFuelLevel ?: ""
+            )
         }
 
         return view

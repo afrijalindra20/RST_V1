@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:background="@drawable/rounded_button_2">
+            android:background="@drawable/rounded_white_background">
 
             <TextView
                 android:id="@+id/tvRegisterTitle"
@@ -43,7 +43,7 @@
                     android:id="@+id/ed_register_email"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:background="@drawable/white_button"
+                    android:background="@drawable/rounded_button_2"
                     android:fontFamily="@font/montserrat_semibold"
                     android:gravity="start|center_vertical"
                     android:hint="@string/hint_email"
@@ -66,7 +66,7 @@
                     android:id="@+id/ed_register_password"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:background="@drawable/white_button"
+                    android:background="@drawable/rounded_button_2"
                     android:fontFamily="@font/montserrat_semibold"
                     android:gravity="start|center_vertical"
                     android:hint="@string/hint_password"
@@ -89,7 +89,7 @@
                     android:id="@+id/ed_register_confirm_password"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:background="@drawable/white_button"
+                    android:background="@drawable/rounded_button_2"
                     android:fontFamily="@font/montserrat_semibold"
                     android:gravity="start|center_vertical"
                     android:hint="@string/hint_confirm_password"
@@ -106,7 +106,7 @@
                 android:layout_height="45dp"
                 android:layout_below="@+id/til_register_confirm_password"
                 android:layout_marginTop="24dp"
-                android:background="@drawable/rounded_button"
+                android:background="@drawable/rounded_button_6"
                 android:fontFamily="@font/montserrat_semibold"
                 android:text="@string/title_register"
                 android:textColor="@color/blue_darker"

@@ -29,7 +29,7 @@ class VehicleInputFragment : Fragment() {
 
         nextButton.setOnClickListener {
             if (validateInputs()) {
-                navigateToFuelLevelFragment()
+                processInputs()
             }
         }
 
@@ -41,26 +41,37 @@ class VehicleInputFragment : Fragment() {
     }
 
     private fun validateInputs(): Boolean {
-        val vehicleType = vehicleTypeInput.text.toString()
-        val fullTank = fullTankInput.text.toString()
-        val kmPerLiter = kmPerLiterInput.text.toString()
-
-        if (vehicleType.isEmpty() || fullTank.isEmpty() || kmPerLiter.isEmpty()) {
-            Toast.makeText(context, "Please fill all fields", Toast.LENGTH_SHORT).show()
+        if (vehicleTypeInput.text.isNullOrEmpty() ||
+            fullTankInput.text.isNullOrEmpty() ||
+            kmPerLiterInput.text.isNullOrEmpty()) {
+            Toast.makeText(context, "Semua field harus diisi", Toast.LENGTH_SHORT).show()
             return false
         }
-
-        if (fullTank.toFloatOrNull() == null || kmPerLiter.toFloatOrNull() == null) {
-            Toast.makeText(context, "Please enter valid numbers for tank capacity and fuel consumption", Toast.LENGTH_SHORT).show()
-            return false
-        }
-
         return true
     }
 
-    private fun navigateToFuelLevelFragment() {
+    private fun processInputs() {
+        val vehicleType = vehicleTypeInput.text.toString()
+        val fullTank = fullTankInput.text.toString().toFloatOrNull() ?: 0f
+        val kmPerLiter = kmPerLiterInput.text.toString().toFloatOrNull() ?: 0f
+
+        // Buat bundle untuk mengirim data ke FuelLevelFragment
+        val bundle = Bundle().apply {
+            putString("vehicleType", vehicleType)
+            putFloat("fullTank", fullTank)
+            putFloat("kmPerLiter", kmPerLiter)
+        }
+
+        // Pindah ke fragment FuelLevelFragment dengan mengirim data
+        navigateToFuelLevelFragment(bundle)
+    }
+
+    private fun navigateToFuelLevelFragment(bundle: Bundle) {
+        val fuelLevelFragment = FuelLevelFragment().apply {
+            arguments = bundle
+        }
         parentFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, FuelLevelFragment())
+            .replace(R.id.fragment_container, fuelLevelFragment)
             .addToBackStack(null)
             .commit()
     }

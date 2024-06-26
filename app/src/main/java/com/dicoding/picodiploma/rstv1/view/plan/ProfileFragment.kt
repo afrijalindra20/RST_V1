@@ -4,16 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.picodiploma.rstv1.R
-import com.google.android.material.button.MaterialButton
-import com.google.android.material.imageview.ShapeableImageView
-import com.google.android.material.textview.MaterialTextView
+import de.hdodenhof.circleimageview.CircleImageView
 
 class ProfileFragment : Fragment() {
+
+    private lateinit var profileImage: CircleImageView
+    private lateinit var tvName: TextView
+    private lateinit var tvEmail: TextView
+    private lateinit var tvPhone: TextView
+    private lateinit var rvRecentJourneys: RecyclerView
+    private lateinit var btnLogout: Button
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_profile, container, false)
@@ -22,65 +28,76 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Data fake
-        val name = "Afrijal Indra"
-        val email = "afrijal@gmail.com"
-        val userId = "USER123456"
+        profileImage = view.findViewById(R.id.profileImage)
+        tvName = view.findViewById(R.id.tvName)
+        tvEmail = view.findViewById(R.id.tvEmail)
+        tvPhone = view.findViewById(R.id.tvPhone)
+        rvRecentJourneys = view.findViewById(R.id.rvRecentJourneys)
+        btnLogout = view.findViewById(R.id.btnLogout)
 
-        // Set up profile information
-        view.findViewById<ShapeableImageView>(R.id.iv_profile_picture).setImageResource(R.drawable.ic_person_blue)
-        view.findViewById<MaterialTextView>(R.id.tv_name).text = name
-        view.findViewById<MaterialTextView>(R.id.tv_email).text = email
-        view.findViewById<MaterialTextView>(R.id.tv_user_id).text = userId
+        // Set up RecyclerView
+        rvRecentJourneys.layoutManager = LinearLayoutManager(context)
+        val journeyAdapter = JourneyAdapter(getFakeJourneys())
+        rvRecentJourneys.adapter = journeyAdapter
 
-        // Set up complete profile button (hidden by default)
-        val btnCompleteProfile = view.findViewById<MaterialButton>(R.id.btn_complete_profile)
-        btnCompleteProfile.visibility = View.GONE
-
-        // Set up logout button
-        view.findViewById<MaterialButton>(R.id.btn_logout).setOnClickListener {
-            // Implementasi logout
+        // Set up click listener for logout button
+        btnLogout.setOnClickListener {
+            // Handle logout
         }
 
-        // Setup RecyclerView untuk riwayat perjalanan
-        val rvTripHistory = view.findViewById<RecyclerView>(R.id.rv_trip_history)
-        rvTripHistory.layoutManager = LinearLayoutManager(context)
-        rvTripHistory.adapter = TripHistoryAdapter(getTripHistoryData())
+        // Load user data
+        loadUserData()
     }
 
-    // Fungsi untuk mendapatkan data riwayat perjalanan palsu
-    private fun getTripHistoryData(): List<TripHistory> {
+    private fun loadUserData() {
+        tvName.text = "Name"
+        tvEmail.text = "YourEmail@example.com"
+        tvPhone.text = "YourNumber(+62)"
+        // Load profile image
+        // profileImage.setImageResource(R.drawable.profile_placeholder)
+    }
+
+    private fun getFakeJourneys(): List<Journey> {
         return listOf(
-            TripHistory("Jakarta - Bandung", "01/01/2024"),
-            TripHistory("Surabaya - Malang", "15/01/2024"),
-            TripHistory("Yogyakarta - Solo", "30/01/2024")
+            Journey("Curug Citambur", "120 km", "1 jam 49 menit", "Mobil"),
+            Journey("Pantai Pangandaran", "223 km", "4 jam 30 menit", "Mobil"),
+            Journey("Gunung Papandayan", "180 km", "3 jam 15 menit", "Mobil"),
+            Journey("Kawah Putih", "47 km", "1 jam 10 menit", "Mobil"),
+            Journey("Situ Patenggang", "50 km", "1 jam 20 menit", "Mobil")
         )
     }
 
-    // Data class untuk riwayat perjalanan
-    data class TripHistory(val route: String, val date: String)
-
-    // Adapter sederhana untuk RecyclerView
-    private inner class TripHistoryAdapter(private val tripHistories: List<TripHistory>) :
-        RecyclerView.Adapter<TripHistoryAdapter.ViewHolder>() {
-
-        inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            val tvRoute: TextView = itemView.findViewById(R.id.tv_route)
-            val tvDate: TextView = itemView.findViewById(R.id.tv_date)
-        }
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_trip, parent, false)
-            return ViewHolder(view)
-        }
-
-        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            val tripHistory = tripHistories[position]
-            holder.tvRoute.text = tripHistory.route
-            holder.tvDate.text = tripHistory.date
-        }
-
-        override fun getItemCount() = tripHistories.size
+    companion object {
+        fun newInstance() = ProfileFragment()
     }
+}
+
+data class Journey(
+    val destination: String,
+    val distance: String,
+    val duration: String,
+    val transportMode: String
+)
+
+class JourneyAdapter(private val journeys: List<Journey>) :
+    RecyclerView.Adapter<JourneyAdapter.JourneyViewHolder>() {
+
+    class JourneyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val tvDestination: TextView = view.findViewById(R.id.tvDestination)
+        val tvDetails: TextView = view.findViewById(R.id.tvDetails)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JourneyViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_journey, parent, false)
+        return JourneyViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: JourneyViewHolder, position: Int) {
+        val journey = journeys[position]
+        holder.tvDestination.text = journey.destination
+        holder.tvDetails.text = "${journey.distance} - ${journey.duration} (${journey.transportMode})"
+    }
+
+    override fun getItemCount() = journeys.size
 }

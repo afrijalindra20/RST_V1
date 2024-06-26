@@ -31,35 +31,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         // Set up map settings
     }
 
-    fun updateMap(route: List<LatLng>, places: List<Place>) {
-        if (!::map.isInitialized) return
-
-        map.clear()
-
-        // Draw route
-        val polylineOptions = PolylineOptions().addAll(route).color(Color.BLUE)
-        map.addPolyline(polylineOptions)
-
-        // Add markers for places
-        for (place in places) {
-            val markerOptions = MarkerOptions()
-                .position(place.location)
-                .title(place.name)
-                .snippet("${place.type} - Distance: ${place.distance} km")
-            map.addMarker(markerOptions)
-        }
-
-        // Move camera to show the entire route
-        val builder = LatLngBounds.Builder()
-        for (point in route) {
-            builder.include(point)
-        }
-        val bounds = builder.build()
-        val padding = 100 // offset from edges of the map in pixels
-        val cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, padding)
-        map.animateCamera(cameraUpdate)
-    }
-
     fun updateUserLocation(location: LatLng) {
         if (!::map.isInitialized) return
 

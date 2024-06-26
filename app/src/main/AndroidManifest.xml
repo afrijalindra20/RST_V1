@@ -18,6 +18,12 @@
         android:theme="@style/Theme.RSTV1"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".view.main.PlaceDetailsBottomSheet"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.MapActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.plan.RouteActivity"
             android:exported="false" />
         <activity

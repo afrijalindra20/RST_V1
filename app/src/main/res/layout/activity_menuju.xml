@@ -75,105 +75,41 @@
         android:contentDescription="@string/location"
         app:srcCompat="@drawable/ic_location_blue" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_emergency"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="500dp"
-        android:contentDescription="@string/emergency"
-        app:srcCompat="@drawable/ic_gas_location_blue" />
 
     <LinearLayout
-        android:id="@+id/bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_button_2"
         android:orientation="vertical"
-        android:padding="16dp"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/textViewName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Curug Citambur"
-                android:textSize="19sp"
-                android:textStyle="bold"/>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true">
-
-                <Button
-                    android:id="@+id/buttonRoute"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_button_5"
-                    android:text="Rute"
-                    android:layout_marginEnd="8dp"/>
-
-                <Button
-                    android:id="@+id/buttonStart"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_button_5"
-                    android:text="Mulai"/>
-            </LinearLayout>
-        </RelativeLayout>
-
-        <RatingBar
-            android:id="@+id/ratingBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:numStars="5"
-            android:rating="4.5"
-            style="?android:attr/ratingBarStyleSmall"
-            android:layout_marginTop="8dp"/>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_car"
-                android:contentDescription="Kendaraan"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2 jam"
-                android:layout_marginStart="8dp"/>
-        </LinearLayout>
+        android:layout_gravity="bottom"
+        android:background="@android:color/white"
+        android:padding="16dp">
 
         <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            tools:text="Destination Name"
+            android:textColor="@color/blue"
+          />
+
+        <Button
+            android:id="@+id/buttonStart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Air terjun dengan tempat perkemahan keluarga. Curug Citambur adalah sebuah curug atau air terjun yang ketinggiannya kira-kira 130 meter di Kabupaten Cianjur bagian Selatan, Provinsi Jawa Barat, Indonesia."
-            android:layout_marginTop="16dp"/>
+            android:text="Start Journey"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_button_6"/>
 
-        <TextView
+        <Button
+            android:id="@+id/buttonShowDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lokasi: Desa Karangjaya, Kecamatan Pasirkuda, Kabupaten Cianjur, Provinsi Jawa Barat, Indonesia"
-            android:layout_marginTop="16dp"/>
+            android:text="Show Description"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_button_6"/>
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@drawable/curug_citambur"
-            android:scaleType="centerCrop"
-            android:layout_marginTop="16dp"
-            android:contentDescription="Gambar Curug Citambur"/>
     </LinearLayout>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
